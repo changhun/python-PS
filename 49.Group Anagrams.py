@@ -3,6 +3,8 @@ import collections
 class Solution:
 
 
+    """ ver2
+
     def anagrams(self, words:list)->list:
         dic = {}
         anagram_cnt = 0
@@ -16,6 +18,14 @@ class Solution:
                 #ans.append(list(word))
                 ans.append([word])
         return ans
+    """
+
+    def anagrams(self, words:list)->list:
+        dic = collections.defaultdict(list)
+        for word in words:
+            dic[''.join(sorted(word))].append(word)
+
+        return dic.values()
 
 sol = Solution()
 strs = ["ate", "tea", "tan", "ate", "nat", "bat"]
