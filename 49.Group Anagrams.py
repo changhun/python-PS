@@ -8,13 +8,13 @@ class Solution:
         anagram_cnt = 0
         ans = []
         for word in words:
-            sorted_word = word.sort()
-            if sorted_word in dic:
-                ans[dic[sorted_word]].append(word)
+            if ''.join(sorted(word)) in dic:
+                ans[dic[''.join(sorted(word))]].append(word)
             else:
-                dic[sorted_word] = anagram_cnt
+                dic[''.join(sorted(word))] = anagram_cnt
                 anagram_cnt += 1
-                ans.append(list(word))
+                #ans.append(list(word))
+                ans.append([word])
         return ans
 
 sol = Solution()
