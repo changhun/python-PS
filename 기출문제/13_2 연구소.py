@@ -1,13 +1,18 @@
 from collections import deque
 from itertools import combinations
 
+
+# 리스트 같은 자료구조를 함수 인자로 받아서 수정한 경우 밖에서도 수정된다.
+# n, m = "튜플 자료구조" 하면 n, m 에 각각 값 들어간다.
+# 입력 라인을 리스트 타입 변수에 대입하려면 list(map(int, input().split())) 이렇게 해야한다.
+# combination 함수 사용 예시
+
 N, M = map(int, input().split())
 
 board = [[] for _ in range(N)]
 for i in range(N):
     board[i] = list(map(int, input().split()))
-    # board[i] = [list(]map(int, input().split())] 이렇게 하면 안 됨. 왜 안 되지?
-
+    # board[i] = [map(int, input().split())] 이렇게 하면 안 됨. 왜 안 되지?
 
 
 EMPTY = 0
