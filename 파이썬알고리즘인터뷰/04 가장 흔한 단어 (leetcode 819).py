@@ -2,6 +2,7 @@ import re
 import collections
 import sys
 
+"""
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
         words = list(re.sub('[^a-z]', ' ', paragraph.lower()).split())
@@ -19,3 +20,18 @@ class Solution:
                 max_word = key
 
         return max_word
+"""
+
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
+        words = [word for word in re.sub("[^\w]", ' ', paragraph).lower().split() if word not in banned]
+        #words = [word for word in re.sub("[^a-zA-Z]", ' ', paragraph).lower().split() if word not in banned]
+        counts = collections.Counter(words)
+        return counts.most_common(1)[0][0]
+
+
+paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+banned = ["hit"]
+sol = Solution()
+ans = sol.mostCommonWord(paragraph, banned)
+print(ans)
