@@ -27,7 +27,7 @@ class Solution:
         return l1
 """
 
-""" iterative """
+""" iterative 
 class Solution:
     def oddEvenList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
@@ -46,4 +46,29 @@ class Solution:
 
         pprev.next = l2
         return head
+"""
+""" iterative2 """
 
+class Solution:
+    def oddEvenList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        odd_cur = head
+        even_cur = even_head = head.next
+
+        while even_cur and even_cur.next:
+            odd_cur.next = even_cur.next
+            even_cur.next = even_cur.next.next
+            odd_cur = odd_cur.next
+            even_cur = even_cur.next
+
+        odd_cur.next = even_head
+        return head
+
+head = ListNode(5, None)
+head = ListNode(4, head)
+head = ListNode(3, head)
+head = ListNode(2, head)
+head = ListNode(1, head)
+
+ret = Solution().oddEvenList(head)
