@@ -67,6 +67,7 @@ class Solution:
 
 
 """ ver3 """
+"""
 import heapq
 class Solution:
     def findCheapestPrice(self, n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:
@@ -106,6 +107,39 @@ class Solution:
         if min_val == INF:
             return -1
         return min_val
+"""
+
+""" ver4: using book """
+
+import heapq
+class Solution:
+    def findCheapestPrice(self, n: int, flights: list[list[int]], src: int, dst: int, k: int) -> int:
+        graph = collections.defaultdict(list)
+        stops = collections.defaultdict(int)
+        for i in range(n):
+            stops[i] = INF
+
+        for flight in flights:
+            a, b, cost = flight[0], flight[1], flight[2]
+            graph[a].append((b, cost))
+
+        # dist, stops, here
+        Q = [[0, -1, src]]
+        heapq.heapify(Q)
+        #stops[src] = -1
+        while Q:
+            cur_dist, stopover, here = heapq.heappop(Q)
+            if here == dst:
+                return cur_dist
+
+            if stopover < stops[here] and stopover < k:
+                stops[here] = stopover
+                next_stopover = stopover + 1
+                for there, cost in graph[here]:
+                    next_dist = cur_dist + cost
+                    heapq.heappush(Q, (next_dist, next_stopover, there))
+        return -1
+
 
 flights = [[0,1,1],[0,2,5],[1,2,1],[2,3,1]]
 n, k, src, dst = 4, 1, 0, 3
