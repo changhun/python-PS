@@ -1,6 +1,13 @@
 from typing import List
 from functools import cmp_to_key
 
+# 1. sort 에 comparator 사용
+#    - cmp_to_key
+# 2. 문자열 compare
+#    - 재귀
+# 3. 알맞은 포맷으로 리턴
+#    - return str(int(ret))
+#      "00"  같은 값 알맞은 포맷으로 변경 => "0"
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
