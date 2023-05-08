@@ -18,3 +18,6 @@ class Solution:
 strs = ["eat","tea","tan","ate","nat","bat"]
 ret = Solution().groupAnagrams(strs)
 print(ret)
+
+print(type(sorted(strs[0])))
+print(type(reversed(strs[0])))
