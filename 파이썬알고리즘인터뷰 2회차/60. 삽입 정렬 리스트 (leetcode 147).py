@@ -6,7 +6,7 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-
+"""
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
@@ -36,6 +36,26 @@ class Solution:
                 prev_target, target = prev_target.next, target.next
 
         return head
+"""
+""" Sol2: It's like put the current node to new sorted list """
+class Solution:
+    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+
+        cur = head.next
+        dummy = ListNode(0, head)
+        head.next = None
+
+        while cur:
+            next = cur.next
+            prev = dummy
+            while prev.next and prev.next.val < cur.val:
+                prev = prev.next
+            prev.next, cur.next = cur, prev.next
+
+            cur = next
+        return dummy.next
 
 
 def list2ListNode(l:list)->ListNode:
