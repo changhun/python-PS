@@ -13,13 +13,13 @@ class Solution:
                 break
 
             ans += n + 1
-            sched_task_len = 0
             for task, count in sched_task:
-                if count > 0:
-                    counts[task] -= 1
-                    sched_task_len += 1
-        #ans -= n + 1 - len(sched_task)
-        ans -= n + 1 - sched_task_len
+
+                counts[task] -= 1
+                if counts[task] == 0:
+                    del counts[task]
+
+        ans -= n + 1 - len(sched_task)
         return ans
 
 
@@ -29,6 +29,7 @@ tasks = ["A","A","A","B","B","B"]
 n = 2
 tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"]
 n = 2
-
+tasks = ["A","B","C","D","A","B","V"]
+n = 3
 ret = Solution().leastInterval(tasks, n)
 print(ret)
