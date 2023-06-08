@@ -1,6 +1,9 @@
 from typing import List
 import collections
 
+
+""" sol1 """
+"""
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         counts = collections.Counter(tasks)
@@ -21,6 +24,26 @@ class Solution:
 
         ans -= n + 1 - len(sched_task)
         return ans
+"""
+
+""" sol2 """
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        counts = collections.Counter(tasks)
+
+        ans = 0
+        # counter
+        while counts:
+            sched_task = counts.most_common(n+1)
+            ans += n + 1
+
+            for task, count in sched_task:
+                counts[task] -= 1
+            counts += collections.Counter()
+
+        ans -= n + 1 - len(sched_task)
+        return ans
+
 
 
 tasks = ["A","A","A","B","B","B"]
