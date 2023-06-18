@@ -1,17 +1,20 @@
 import collections
-#N, M = map(int, input().split())
-#print(N, M)
-n, m = map(int, input().split())
-print(n, m)
+N, M = map(int, input().split())
+
+"""
 board_str = []
 for _ in range(N):
     board_str.append(input())
 
 board = []
 for i, low in enumerate(board_str):
+    board.append([])
     for char in low:
         board[i].append(int(char))
-
+"""
+board = []
+for i in range(N):
+    board.append(list(map(int, input())))
 
 move = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 def bfs(graph, y, x):
