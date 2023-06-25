@@ -2,6 +2,9 @@ import heapq
 import collections
 
 # 다익스트라까지 필요 없이 그냥 BFS 로 풀린다. 두 가지 다 해보기.
+
+""" sol1: dijkstra """
+"""
 INF = int(1e9)
 
 N, M = map(int, input().split())
@@ -16,8 +19,6 @@ X, K = map(int, input().split())
 
 distance = [INF] * (N + 1)
 
-""" sol1: dijkstra """
-"""
 def dijkstra(start):
     pq = []
     distance[start] = 0
@@ -40,9 +41,29 @@ def dijkstra(start):
 
 
 dijkstra(K)
+ans = distance[1] + distance[X]
+if ans >= INF:
+    print(-1)
+else:
+    print(ans)
 """
 
 """ sol2: BFS """
+"""
+INF = int(1e9)
+
+N, M = map(int, input().split())
+graph = [[] for _ in range(N + 1)]
+# 거리가 다 1 이므로 edge 를 tuple 로 표현하지 않아도 된다.
+for _ in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+X, K = map(int, input().split())
+
+distance = [INF] * (N + 1)
+
 def bfs(start):
     q = collections.deque()
     distance[start] = 0
@@ -59,10 +80,37 @@ def bfs(start):
 
 
 bfs(K)
-
 ans = distance[1] + distance[X]
 if ans >= INF:
     print(-1)
 else:
     print(ans)
+"""
 
+
+""" sol3: Floyd """
+INF = int(1e9)
+
+N, M = map(int, input().split())
+graph = [[INF] * (N + 1) for _ in range(N + 1)]
+# 거리가 다 1 이므로 edge 를 tuple 로 표현하지 않아도 된다.
+for _ in range(M):
+    a, b = map(int, input().split())
+    graph[a][b] = 1
+    graph[b][a] = 1
+
+for i in range(1, N+1):
+    graph[i][i] = 0
+
+X, K = map(int, input().split())
+
+for k in range(1, N+1):
+    for a in range(1, N+1):
+        for b in range(1, N+1):
+            graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
+
+ans = graph[1][K] + graph[K][X]
+if ans >= INF:
+    print(-1)
+else:
+    print(ans)
