@@ -28,6 +28,7 @@ kruskal_edges = []
 for a, b, c in adj:
     if get_parent(parent, a) == get_parent(parent, b):
         continue
+    union(parent, a, b)
     kruskal_edges.append(c)
 
 ans = sum(kruskal_edges) - max(kruskal_edges)
