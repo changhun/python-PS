@@ -19,24 +19,21 @@ q = collections.deque()
 q.append(x)
 while q:
     here = q.popleft()
-    """
+
     if dist[here] > k:
         break
     if dist[here] == k:
         ans.append(here)
-    """
 
     for there in graph[here]:
         if dist[there] == INF:
             dist[there] = dist[here] + 1
             q.append(there)
 
-for i, val in enumerate(dist):
-    if val == k:
-        ans.append(i)
+# sorting 안 해서 헤맴!!!!!!!
+ans.sort()
 
-#if not ans:
-if len(ans) == 0:
+if not ans:
     print(-1)
 else:
     for val in ans:
