@@ -25,17 +25,30 @@ class Solution:
         cur = first.next
         seq = left + 1
 
-        while seq < right:
+        while seq <= right:
+            if seq == right:
+                before_left.next = cur
             cur.next, cur, prev = prev, cur.next, cur
             seq += 1
 
-        next = None
-        if seq <= right:
-            next = cur.next
-            cur.next = prev
-            before_left.next = cur
-            first.next = next
+        first.next = cur
+
+        # 아래처럼 하면 예외처리를 해줘야 한다.
+        # while seq < right:
+        #     cur.next, cur, prev = prev, cur.next, cur
+        #     seq += 1
+        #
+        # next = None
+        # if seq <= right:
+        #     next = cur.next
+        #     cur.next = prev
+        #     before_left.next = cur
+        #     first.next = next
+
         return dummy.next
+
+
+
 
 
 def l2ListNode(l):
