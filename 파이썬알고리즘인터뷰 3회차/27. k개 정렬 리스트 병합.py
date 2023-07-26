@@ -7,7 +7,8 @@ class ListNode:
         self.val = val
         self.next = next
 
-
+# Ans1
+"""
 class WrapperNode:
     def __init__(self, node):
         self.node = node
@@ -32,24 +33,25 @@ class Solution:
             if tail.next:
                 heapq.heappush(heap, WrapperNode(tail.next))
         return dummy_head.next
+"""
 
+# Ans2
 
-# class Solution:
-#     def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
-#         dummy_head = ListNode()
-#         tail = dummy_head
-#         heap = []
-#         for node in lists:
-#             if node:
-#                 heapq.heappush(heap, (node.val, node))
-#         while heap:
-#             min_val, min_node = heapq.heappop(heap)
-#             tail.next = min_node
-#             tail = tail.next
-#             if min_node.next:
-#                 next_node = min_node.next
-#                 heapq.heappush(heap, (next_node.val, next_node))
-#         return dummy_head.next
+class Solution:
+    def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
+        dummy_head = ListNode()
+        tail = dummy_head
+        heap = []
+        for i, node in enumerate(lists):
+            if node:
+                heapq.heappush(heap, (node.val, i, node))
+        while heap:
+            min_val, i, min_node = heapq.heappop(heap)
+            tail.next = min_node
+            tail = tail.next
+            if min_node.next:
+                heapq.heappush(heap, (min_node.next.val, i, min_node.next))
+        return dummy_head.next
 
 
 # Test code
