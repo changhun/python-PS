@@ -34,6 +34,7 @@ class Solution:
                 k += 1
                 i += 1
             while j <= e:
+                tmp[k] = nums[j]
                 k += 1
                 j += 1
 
@@ -42,8 +43,11 @@ class Solution:
 
         mergeSort(0, len(nums) -1 )
         ans = ""
+        print(nums)
         for num in nums:
             ans += str(num)
+        if nums[0] == 0:
+            ans = "0"
         return ans
 
 
