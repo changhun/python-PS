@@ -1,8 +1,6 @@
 from typing import List
 
-
-
-
+"""
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         tmp = [0] * len(nums)
@@ -48,6 +46,27 @@ class Solution:
             ans += str(num)
         if nums[0] == 0:
             ans = "0"
+        return ans
+"""
+from functools import cmp_to_key
+
+def comp(a, b):
+    if str(a)+str(b) > str(b) + str(a):
+        return -1
+    elif str(a)+str(b) == str(b) + str(a):
+        return 0
+    else:
+        return 1
+
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        nums.sort(key=cmp_to_key(comp))
+        ans = ""
+        if nums[0] == 0:
+            ans = "0"
+        else:
+            for num in nums:
+                ans += str(num)
         return ans
 
 
