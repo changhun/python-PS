@@ -26,8 +26,7 @@ class Solution:
             ans = -1
 
         if ans != -1:
-            len_pivot = len(nums) - pivot - 1
-            ans = (ans + len(nums) - len_pivot) % len(nums)
+            ans = (ans + pivot + 1) % len(nums)
         return ans
 
 
