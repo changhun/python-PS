@@ -1,3 +1,9 @@
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
-        return bin(x ^ y).count('1')
+        xor = x ^ y
+        ret = 0
+        while xor:
+            ret += (xor & 1)
+            xor >>= 1
+
+        return ret
