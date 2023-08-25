@@ -4,6 +4,6 @@ class Solution:
         ret = 0
         while xor:
             ret += (xor & 1)
-            xor >>= 1
-
+            xor &= xor - 1
+            ret += 1
         return ret
