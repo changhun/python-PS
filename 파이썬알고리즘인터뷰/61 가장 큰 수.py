@@ -8,6 +8,7 @@ from functools import cmp_to_key
 # 3. 알맞은 포맷으로 리턴
 #    - return str(int(ret))
 #      "00"  같은 값 알맞은 포맷으로 변경 => "0"
+#      - 10자리 이하?의 int 범위 내에서만 이렇게 할 수 있을 듯.
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:

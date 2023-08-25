@@ -39,3 +39,17 @@ def move_left(direction) -> int:
 def move_right(direction) -> int:
     direction = (direction + 1) % 4
     return direction
+
+
+#input
+# 10
+# 4
+# 1 2
+# 1 3
+# 1 4
+# 1 5
+# 4
+# 8 D
+# 10 D
+# 11 D
+# 13 L

@@ -9,7 +9,7 @@ def threeSum(nums: list[int]) -> list[list[int]]:
         lo, hi = i+1, n-1
         while lo < hi:
             if nums[lo] + nums[hi] == complement:
-                if [nums[i], nums[lo], nums[hi]] not in answer
+                if [nums[i], nums[lo], nums[hi]] not in answer:
                     answer.append([nums[i], nums[lo], nums[hi]])
                 lo += 1
                 hi -= 1

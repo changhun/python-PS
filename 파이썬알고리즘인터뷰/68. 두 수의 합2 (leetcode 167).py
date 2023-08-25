@@ -24,3 +24,4 @@ numbers = [5,25,75]
 target = 100
 ret = Solution().twoSum(numbers, target)
 print(ret)
+

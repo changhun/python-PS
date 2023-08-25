@@ -19,4 +19,4 @@ class Solution:
             mid = (l + r)//2
             root = TreeNode(nums[mid], list2tree(l, mid-1), list2tree(mid+1, r))
             return root
-        return list2tree(0, len(nums)-1)
+        return list2tree(0, len(nums)-1)de

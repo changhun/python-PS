@@ -6,3 +6,7 @@ for i in range(1, length):
     if s[i] != s[i-1]:
         switch_cnt += 1
 print(switch_cnt//2)
+
+
+# Input
+# 0101010
