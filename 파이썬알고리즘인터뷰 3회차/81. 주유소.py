@@ -12,7 +12,7 @@ class Solution:
             if i - s == n:
                 return s
             if cur_gas + gas[i] < cost[i]:
-                if i == n - 1:
+                if i >= n - 1:
                     return -1
                 cur_gas = 0
                 s = i + 1
