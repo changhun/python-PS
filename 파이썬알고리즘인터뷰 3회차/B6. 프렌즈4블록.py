@@ -1,7 +1,7 @@
-
-
-
 def solution(m, n, board):
+    for i in range(m):
+        board[i] = [ch for ch in board[i]]
+
     def find_group():
         erased = 0
         board_cpy = [[col for col in row] for row in board]
@@ -10,7 +10,7 @@ def solution(m, n, board):
                 if board[i][j] == board[i][j+1] and board[i][j] == board[i+1][j] and board[i][j] == board[i+1][j+1]:
                     for k in range(2):
                         for l in range(2):
-                            if board[i+k][j+l] != '.':
+                            if board_cpy[i+k][j+l] != '.':
                                 erased += 1
                             board_cpy[i+k][j+l] = '.'
         #board = board_cpy
@@ -28,7 +28,7 @@ def solution(m, n, board):
                 elif board[i][j] != '.' and empty_row != -1:
                     board[empty_row][j] = board[i][j]
                     board[i][j] = '.'
-                    empty_row += 1
+                    empty_row -= 1
 
     answer = 0
     while True:
@@ -36,6 +36,7 @@ def solution(m, n, board):
         if ret == 0:
             break
         answer += ret
+        move()
     return answer
 
 
