@@ -3,7 +3,8 @@ import collections
 
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
-        words = re.sub("[.,]", " ", paragraph).lower().split()
+        #words = re.sub("[.,]", " ", paragraph).lower().split()
+        words = re.sub("[^a-zA-Z]", " ", paragraph).lower().split()
         words = [word for word in words if word not in banned]
         return collections.Counter(words).most_common(1)[0][0]
 
