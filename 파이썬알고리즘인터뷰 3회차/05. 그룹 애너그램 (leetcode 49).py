@@ -2,11 +2,14 @@ import collections
 
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        dic = collections.defaultdict(list)
-        for s in strs:
-            dic[''.join(sorted(s))].append(s)
+        anagrams = collections.defaultdict(list)
+        for word in strs:
+            word_sorted = ''.join(sorted([ch for ch in word]))
+            # anagrams[[ch for ch in word].sort()].append(word)
+            anagrams[word_sorted].append(word)
+        return list(anagrams.values())
 
-        return dic.values()
+
 
 strs = ["eat","tea","tan","ate","nat","bat"]
 ret = Solution().groupAnagrams(strs)
