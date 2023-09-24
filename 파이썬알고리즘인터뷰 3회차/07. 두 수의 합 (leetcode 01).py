@@ -5,10 +5,9 @@ class Solution:
         dic = {}
         for i, num in enumerate(nums):
             if target - num in dic:
-                return [i, dic[target-num]]
+                return [i, dic[target - num]]
             dic[num] = i
 
-        return []
 
 nums = [2,7,11,15]
 target = 9
