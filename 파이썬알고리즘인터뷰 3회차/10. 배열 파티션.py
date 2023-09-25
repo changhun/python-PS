@@ -5,5 +5,6 @@ class Solution:
         return sum(sorted(nums)[::2])
 
 
+
 nums = [6,2,6,5,1,2]
 print(Solution().arrayPairSum(nums))
